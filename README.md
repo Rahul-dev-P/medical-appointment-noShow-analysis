@@ -36,8 +36,9 @@ This project analyzes 110,521 medical appointments to identify the factors contr
 ## Dataset Overview & Data Cleaning Workflow
 
 ### Primary Tables & Views
-1. **`appointments`**: Cleaned baseline dataset containing patient demographic attributes, clinical conditions, booking dates, and attendance outcomes.
-2. **`v_appointment_risk`**: A custom analytical SQL view built with window functions to track patient historical attendance and bucket appointments into actionable risk tiers.
+1. **`KaggleV2-May-2016-ascii`**: Raw dataset from Kaggle
+2.  **`appointments`**: Cleaned baseline dataset containing patient demographic attributes, clinical conditions, booking dates, and attendance outcomes.
+3. **`v_appointment_risk`**: A custom analytical SQL view built with window functions to track patient historical attendance and bucket appointments into actionable risk tiers.
 
 ### Data Cleaning & Transformation Pipeline
 - **Column Standardization**: Cleaned key field names (`Hipertension` $
