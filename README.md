@@ -36,9 +36,8 @@ This project analyzes 110,521 medical appointments to identify the factors contr
 ## Dataset Overview & Data Cleaning Workflow
 
 ### Primary Tables & Views
-1. **`KaggleV2-May-2016-ascii`**: Raw dataset from Kaggle
-2.  **`appointments`**: Cleaned baseline dataset containing patient demographic attributes, clinical conditions, booking dates, and attendance outcomes.
-3. **`v_appointment_risk`**: A custom analytical SQL view built with window functions to track patient historical attendance and bucket appointments into actionable risk tiers.
+1. **`appointments`**: Cleaned baseline dataset containing patient demographic attributes, clinical conditions, booking dates, and attendance outcomes.
+2. **`v_appointment_risk`**: A custom analytical SQL view built with window functions to track patient historical attendance and bucket appointments into actionable risk tiers.
 
 ### Data Cleaning & Transformation Pipeline
 - **Column Standardization**: Cleaned key field names (`Hipertension` $
@@ -54,7 +53,7 @@ ightarrow$ `no_show`).
 ## Key Exploratory Data Analysis (EDA) Findings
 
 ### 1. Lead Time Analysis (Booking-to-Appointment Gap)
-Lead time emerged as the single strongest driver of patient no-shows.
+Lead time shows the strongest association with no-show rates
 
 | Lead Time Bucket | Lead Time Range | Total Appointments | No-Show Count | No-Show Rate (%) |
 | :--- | :--- | :---: | :---: | :---: |
@@ -159,7 +158,17 @@ To operationalize these insights, the SQL view `v_appointment_risk` uses window 
 4. **Targeted Transportation Support**:
    - Partner with local transit programs or community health workers for patients on welfare scholarships to mitigate socioeconomic access barriers.
 
+
 ---
+
+
+## Limitations
+
+- The risk-tier model is rule-based (threshold logic), not a trained ML model — it prioritizes interpretability over predictive optimization
+- SMS analysis is correlational, not causal — SMS assignment isn't randomized in this dataset, so the "SMS paradox" reflects confounding by lead time, not SMS effectiveness itself
+
+---
+
 
 ## Dashboard Overview
 
@@ -177,3 +186,13 @@ To operationalize these insights, the SQL view `v_appointment_risk` uses window 
 ├── README.md
 └── INSIGHTS.md
 ```
+
+## Setup
+
+1. Download the dataset from the Kaggle link above
+
+2. Run `sql/wrangling.sql` in MySQL to clean data and create the `appointments` table and `v_appointment_risk` view
+
+3. Run `sql/eda.sql` for exploratory queries
+
+4. Open `dashboard.pbix` in Power BI Desktop and refresh the data connection 
