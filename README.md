@@ -172,7 +172,7 @@ To operationalize these insights, the SQL view `v_appointment_risk` uses window 
 
 ## Dashboard Overview
 
-(images/dashboard.png)
+<img width="1790" height="1006" alt="dashboard" src="https://github.com/user-attachments/assets/e377b5a7-9693-4a42-9f6d-48902accfec0" />
 
 ---
 
